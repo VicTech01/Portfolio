@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="VicTech — Victor's portfolio. UI/UX designer & front-end developer. Figma design + responsive HTML/CSS/JS. See live app UI projects." />
+<title>VicTech — UI/UX Designer & Front-End Developer</title>
+<style>
+  :root{
+    --bg:#0a0e14; --surface:#121821; --surface-2:#18202b; --text:#eef4f7; --muted:#8a97a5;
+    --aqua:#26d7e6; --coral:#ff6a5a; --stroke:rgba(255,255,255,.08); --stroke-2:rgba(255,255,255,.14);
+    --r:20px; --shadow:0 24px 60px rgba(0,0,0,.4);
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--text);background:
+    radial-gradient(1100px 600px at 12% -10%, #10222c 0%, transparent 55%),
+    radial-gradient(900px 500px at 110% 5%, #201436 0%, transparent 55%), #06090d;line-height:1.5}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+  .accent{color:var(--aqua)} .coral{color:var(--coral)}
+
+  /* nav */
+  header{position:sticky;top:0;z-index:50;background:rgba(6,9,13,.7);backdrop-filter:blur(12px);border-bottom:1px solid var(--stroke)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .logo{font-weight:850;font-size:20px;letter-spacing:-.4px}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{color:var(--muted);font-weight:600;font-size:14px;transition:.2s}
+  .nav-links a:hover{color:var(--text)}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:11px 18px;font-weight:800;font-size:14px;transition:.16s;cursor:pointer;border:none}
+  .btn-primary{background:var(--aqua);color:#04222a;box-shadow:0 10px 24px rgba(38,215,230,.25)}
+  .btn-primary:hover{filter:brightness(1.05)}
+  .btn-ghost{border:1px solid var(--stroke-2);color:var(--text);background:rgba(255,255,255,.02)}
+  .btn-ghost:hover{border-color:var(--aqua);color:var(--aqua)}
+  @media(max-width:680px){.nav-links a:not(.btn){display:none}}
+
+  /* hero */
+  .hero{padding:90px 0 70px;text-align:center}
+  .pill{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:700;color:var(--aqua);background:rgba(38,215,230,.1);border:1px solid rgba(38,215,230,.3);padding:8px 16px;border-radius:999px;margin-bottom:26px}
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--aqua);box-shadow:0 0 12px var(--aqua)}
+  .hero h1{font-size:clamp(38px,7vw,68px);font-weight:850;letter-spacing:-2px;line-height:1.03}
+  .hero p{max-width:600px;margin:22px auto 0;color:var(--muted);font-size:clamp(16px,2.4vw,19px)}
+  .hero .cta{display:flex;gap:14px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+  .stats{display:flex;gap:40px;justify-content:center;margin-top:52px;flex-wrap:wrap}
+  .stat b{font-size:30px;font-weight:850;display:block}
+  .stat span{font-size:13px;color:var(--muted)}
+
+  /* section */
+  section{padding:64px 0}
+  .sec-eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--aqua);font-weight:800}
+  .sec-title{font-size:clamp(28px,4vw,40px);font-weight:850;letter-spacing:-1px;margin-top:10px}
+  .sec-sub{color:var(--muted);margin-top:12px;max-width:560px}
+
+  /* project cards */
+  .project{background:linear-gradient(180deg,var(--surface),var(--surface-2));border:1px solid var(--stroke);border-radius:28px;padding:34px;margin-top:34px;box-shadow:var(--shadow);overflow:hidden}
+  .project .grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  @media(max-width:800px){.project .grid{grid-template-columns:1fr;gap:26px}}
+  .project h3{font-size:28px;font-weight:850;letter-spacing:-.6px}
+  .project .tagline{color:var(--muted);margin-top:4px;font-weight:600}
+  .project p{color:var(--muted);margin-top:16px;font-size:15px}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+  .tag{font-size:12px;font-weight:700;color:var(--muted);background:rgba(255,255,255,.05);border:1px solid var(--stroke);padding:6px 12px;border-radius:999px}
+  .project .links{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+  .phones{display:flex;gap:14px;justify-content:center;align-items:center}
+  .phones .pf{border-radius:22px;background:#000;padding:5px;box-shadow:0 24px 50px rgba(0,0,0,.5),0 0 0 1px #202b37}
+  .phones .pf img{border-radius:18px;width:100%}
+  .phones .pf.a{width:44%;transform:rotate(-5deg)}
+  .phones .pf.b{width:50%;z-index:2}
+  .phones .pf.c{width:44%;transform:rotate(5deg)}
+  .badge-live{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:800;color:#3ddc97;background:rgba(61,220,151,.12);padding:5px 12px;border-radius:999px}
+  .badge-live .lv{width:7px;height:7px;border-radius:50%;background:#3ddc97;box-shadow:0 0 10px #3ddc97}
+
+  /* services */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+  @media(max-width:800px){.cards{grid-template-columns:1fr}}
+  .svc{background:var(--surface);border:1px solid var(--stroke);border-radius:var(--r);padding:26px}
+  .svc .ic{width:48px;height:48px;border-radius:14px;background:rgba(38,215,230,.12);color:var(--aqua);display:grid;place-items:center;margin-bottom:16px}
+  .svc .ic svg{width:26px;height:26px}
+  .svc h4{font-size:18px;font-weight:800}
+  .svc p{color:var(--muted);font-size:14px;margin-top:8px}
+
+  /* about + skills */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;margin-top:34px;align-items:start}
+  @media(max-width:800px){.about-grid{grid-template-columns:1fr}}
+  .about-grid p{color:var(--muted);font-size:16px;margin-bottom:14px}
+  .skills{display:flex;flex-wrap:wrap;gap:10px}
+  .skill{font-size:13px;font-weight:700;background:var(--surface);border:1px solid var(--stroke);padding:9px 15px;border-radius:12px}
+  .skill.on{border-color:var(--aqua);color:var(--aqua)}
+
+  /* contact */
+  .contact{background:linear-gradient(135deg,rgba(38,215,230,.1),rgba(255,106,90,.08));border:1px solid var(--stroke-2);border-radius:28px;padding:48px 34px;text-align:center;margin-top:20px}
+  .contact h2{font-size:clamp(26px,4vw,38px);font-weight:850;letter-spacing:-1px}
+  .contact p{color:var(--muted);margin:14px auto 0;max-width:480px}
+  .contact .cta{display:flex;gap:14px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+  footer{border-top:1px solid var(--stroke);padding:30px 0;color:var(--muted);font-size:13px;text-align:center}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">Vic<span class="accent">Tech</span></div>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a class="btn btn-primary" href="https://www.fiverr.com/victech_designz" target="_blank" rel="noopener">Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero wrap">
+  <span class="pill"><span class="dot"></span> Available for freelance work</span>
+  <h1>I design &amp; build<br><span class="accent">modern app UIs</span></h1>
+  <p>Hi, I'm Victor — a UI/UX designer &amp; front-end developer. I turn ideas into clean, responsive interfaces, designed in Figma and built into production-ready HTML, CSS &amp; JavaScript.</p>
+  <div class="cta">
+    <a class="btn btn-primary" href="#work">View my work</a>
+    <a class="btn btn-ghost" href="https://www.fiverr.com/victech_designz" target="_blank" rel="noopener">Hire me on Fiverr</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>2</b><span>live projects</span></div>
+    <div class="stat"><b class="accent">13</b><span>screens designed</span></div>
+    <div class="stat"><b class="coral">100%</b><span>responsive &amp; coded</span></div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="wrap">
+  <div class="sec-eyebrow">Selected work</div>
+  <div class="sec-title">Projects with <span class="accent">live demos</span></div>
+  <div class="sec-sub">Real, deployed products — click through them yourself. Designed and coded end-to-end.</div>
+
+  <!-- AquaFlow -->
+  <article class="project">
+    <div class="grid">
+      <div>
+        <span class="badge-live"><span class="lv"></span> Live</span>
+        <h3 style="margin-top:12px">AquaFlow</h3>
+        <div class="tagline">Hydration tracking app · dark UI kit</div>
+        <p>A complete 7-screen hydration app: an animated progress ring, quick water logging with validation, history charts, smart reminders, a connected bottle, and profile. Built with real loading, empty &amp; error states and full accessibility.</p>
+        <div class="tags"><span class="tag">Mobile UI/UX</span><span class="tag">Figma</span><span class="tag">HTML/CSS/JS</span><span class="tag">Dark theme</span><span class="tag">Accessible</span></div>
+        <div class="links">
+          <a class="btn btn-primary" href="https://aquaflow-seven-lake.vercel.app" target="_blank" rel="noopener">Live demo →</a>
+          <a class="btn btn-ghost" href="https://github.com/VicTech01/AquaFlow" target="_blank" rel="noopener">View code</a>
+        </div>
+      </div>
+      <div class="phones">
+        <div class="pf a"><img src="assets/aquaflow-3.png" alt="AquaFlow history"></div>
+        <div class="pf b"><img src="assets/aquaflow-1.png" alt="AquaFlow home"></div>
+        <div class="pf c"><img src="assets/aquaflow-2.png" alt="AquaFlow add water"></div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Wanderly -->
+  <article class="project">
+    <div class="grid">
+      <div class="phones" style="order:0">
+        <div class="pf a"><img src="assets/wanderly-3.png" alt="Wanderly trips"></div>
+        <div class="pf b"><img src="assets/wanderly-1.png" alt="Wanderly explore"></div>
+        <div class="pf c"><img src="assets/wanderly-2.png" alt="Wanderly detail"></div>
+      </div>
+      <div>
+        <span class="badge-live"><span class="lv"></span> Live</span>
+        <h3 style="margin-top:12px">Wanderly</h3>
+        <div class="tagline">Stays &amp; travel booking app · light UI</div>
+        <p>A 6-screen booking experience: explore with rich imagery, property details with amenities, a full checkout flow with live price calculation and guest steppers, trips, and profile. Clean, warm light theme showing design range.</p>
+        <div class="tags"><span class="tag">Booking UX</span><span class="tag">Figma</span><span class="tag">HTML/CSS/JS</span><span class="tag">Light theme</span><span class="tag">E-commerce flow</span></div>
+        <div class="links">
+          <a class="btn btn-primary" href="https://wanderly-five-theta.vercel.app" target="_blank" rel="noopener">Live demo →</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="wrap">
+  <div class="sec-eyebrow">What I do</div>
+  <div class="sec-title">Services</div>
+  <div class="cards">
+    <div class="svc">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 19h2"/></svg></div>
+      <h4>Mobile App UI/UX</h4>
+      <p>Clean, modern interfaces for iOS &amp; Android — dashboards, onboarding, e-commerce, SaaS.</p>
+    </div>
+    <div class="svc">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+      <h4>Figma → Code</h4>
+      <p>Pixel-perfect conversion of your Figma designs into responsive, clean HTML/CSS/JS.</p>
+    </div>
+    <div class="svc">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg></div>
+      <h4>UI Kits &amp; Components</h4>
+      <p>Reusable, themeable design systems and component libraries you can build on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="wrap">
+  <div class="sec-eyebrow">About</div>
+  <div class="about-grid">
+    <div>
+      <div class="sec-title" style="margin-bottom:16px">Design that ships</div>
+      <p>I'm Victor, a UI/UX designer and front-end developer based in Nairobi, Kenya. I care about the details most designers skip — loading and empty states, form validation, accessibility, and clean, documented code.</p>
+      <p>I don't just hand over static mockups. I deliver working, responsive interfaces your team can ship immediately. Every project you see here is live and built from scratch.</p>
+    </div>
+    <div>
+      <div class="sec-eyebrow" style="margin-bottom:14px">Skills</div>
+      <div class="skills">
+        <span class="skill on">UI/UX Design</span>
+        <span class="skill on">Figma</span>
+        <span class="skill on">HTML5</span>
+        <span class="skill on">CSS3</span>
+        <span class="skill on">JavaScript</span>
+        <span class="skill">Responsive Design</span>
+        <span class="skill">Mobile App Design</span>
+        <span class="skill">Prototyping</span>
+        <span class="skill">Design Systems</span>
+        <span class="skill">Accessibility</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="wrap">
+  <div class="contact">
+    <h2>Let's build something <span class="accent">great</span></h2>
+    <p>Have an app or website that needs a beautiful, responsive UI? I'd love to help.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://www.fiverr.com/victech_designz" target="_blank" rel="noopener">Hire me on Fiverr</a>
+      <a class="btn btn-ghost" href="https://github.com/VicTech01" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 VicTech · Victor · UI/UX Designer &amp; Front-End Developer · Built from scratch with HTML, CSS &amp; JS</div>
+</footer>
+
+</body>
+</html>
